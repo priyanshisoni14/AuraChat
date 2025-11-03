@@ -1,4 +1,4 @@
-import { AuthContext } from './AuthContext';
+import { AuthContext } from './AuthContext.js';
 import  axios  from 'axios'
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
