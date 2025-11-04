@@ -16,7 +16,7 @@ const ProfilePage = () => {
     e.preventDefault()
     if(!selectedImage){
       await updateProfile({fullName: name, bio})
-      navigate('/loading')
+      navigate('/')
       return;
     }
 
@@ -25,12 +25,12 @@ const ProfilePage = () => {
     reader.onload = async ()=>{
       const base64Image = reader.result;
       await updateProfile({profilePic: base64Image, fullName: name, bio})
-      navigate('/loading')
+      navigate('/')
     }
   }
 
   return (
-    <div className='min-h-screen bg-cover bg-no-repeat flex items-center justify-center'>
+    <div className='min-h-screen bg-cover bg-no-repeat flex items-center justify-center backdrop-blur-2xl'>
         <div className='w-5/6 max-w-2xl backdrop-blur-2xl text-gray-300 border-2 
         border-gray-600 flex items-center justify-between max-sm:flex-col-reverse rounded-lg'>
             <form onSubmit={handleSubmit}

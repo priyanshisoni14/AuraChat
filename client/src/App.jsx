@@ -11,7 +11,7 @@ function App() {
   const { authUser } = useContext(AuthContext)
 
   return (
-    <div className="bg-[url('./src/assets/bgImage.svg')] bg-contain min-h-screen">
+    <div className="bg-[url('./src/assets/image4.jpeg')] bg-contain min-h-screen">
       <Toaster />
       <Routes>
         <Route path="/" element={authUser ? <HomePage /> : <Navigate to="/login" />} />

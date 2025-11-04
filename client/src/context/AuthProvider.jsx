@@ -2,6 +2,7 @@ import { AuthContext } from './AuthContext.js';
 import  axios  from 'axios'
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import io from 'socket.io-client';
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -16,6 +17,7 @@ const [authUser, setAuthUser]= useState(null)
 const [onlineUsers, setOnlineUsers]= useState([])
 const [socket, setSocket]= useState(null)
 const [loading, setLoading] = useState(true)
+const navigate = useNavigate()
 
 
 // check if token is valid if so set the data and connect to socket
@@ -23,8 +25,8 @@ const checkAuth = async ()=>{
     try {
         const {data} = await axios.get('/api/auth/check')
         if(data.success){
-            setAuthUser(data.user)
-            connectSocket(data.user)
+            setAuthUser(data.userData)
+            connectSocket(data.userData)
         }
     } catch (error) {
         toast.error(error.message)
@@ -36,8 +38,8 @@ const login = async (state, credentials)=>{
     try {
         const {data} = await axios.post(`/api/auth/${state}`, credentials)
         if(data.success){
-            setAuthUser(data.user)
-            connectSocket(data.user)
+            setAuthUser(data.userData)
+            connectSocket(data.userData)
             axios.defaults.headers.common["token"]= data.token
             setToken(data.token)
             localStorage.setItem('token', data.token)
@@ -77,8 +79,9 @@ const updateProfile = async (body) => {
     );
 
     if (data.success) {
-      setAuthUser(data.user);
+      setAuthUser(data.userData);
       toast.success("Profile updated successfully");
+      navigate('/')
       return true;
     } else {
       toast.error(data.message || "Update failed");
