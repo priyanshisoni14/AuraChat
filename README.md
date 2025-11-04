@@ -8,7 +8,6 @@
 ![MongoDB](https://img.shields.io/badge/Database-MongoDB-4EA94B?logo=mongodb&logoColor=white)
 ![Socket.io](https://img.shields.io/badge/Realtime-Socket.io-black?logo=socket.io)
 ![Cloudinary](https://img.shields.io/badge/Storage-Cloudinary-3448C5?logo=cloudinary&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-blue)
 
 </div>
 
